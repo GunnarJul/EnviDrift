@@ -44,7 +44,35 @@
 				],
 				"userProperties": [],
 				"typeProperties": {
+					"items": {
+						"value": "@activity('ReadEmployeeData').output.value",
+						"type": "Expression"
+					},
 					"isSequential": false
+				}
+			},
+			{
+				"name": "SendMail",
+				"type": "AzureFunctionActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"functionName": "SensMail",
+					"method": "POST",
+					"body": {
+						"email": "@{item().Email}"
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureFunction",
+					"type": "LinkedServiceReference"
 				}
 			}
 		],
