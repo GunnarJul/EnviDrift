@@ -32,7 +32,7 @@
 				}
 			},
 			{
-				"name": "ForEach1",
+				"name": "SendMailForLoop",
 				"type": "ForEach",
 				"dependsOn": [
 					{
@@ -48,7 +48,8 @@
 						"value": "@activity('ReadEmployeeData').output.value",
 						"type": "Expression"
 					},
-					"isSequential": false
+					"isSequential": false,
+					"batchCount": 0
 				}
 			},
 			{
@@ -64,7 +65,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"functionName": "SensMail",
+					"functionName": "SendMail",
 					"method": "POST",
 					"body": {
 						"email": "@{item().Email}"
